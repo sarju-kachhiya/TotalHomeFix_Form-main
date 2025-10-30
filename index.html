@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HomeeHub</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #000;
+}
+
+.navbar {
+  background-color: #0e1b2d !important;
+}
+
+.nav-link {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.btn-orange {
+  background-color: #ff6600;
+  color: white;
+  border-radius: 4px;
+  padding: 10px 20px;
+}
+
+.btn-orange:hover {
+  background-color: #fff;
+  color: #0e1b2d;
+}
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 100px 20px;
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
+  text-align: left;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('assets/hero-bg.jpg') no-repeat center center;
+  background-size: cover;
+  opacity: 0.4; /* Adjust this value as needed */
+  z-index: -1;
+}
+
+
+.highlight-orange {
+  background-color: #ff6600;
+  color: white;
+  padding: 0 12px;
+  border-radius: 6px;
+}
+
+.block {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+}
+.object-fit-cover {
+  object-fit: cover;
+  height: 100%;
+}
+
+.bg-dark {
+  background-color: #0e1b2d !important;
+}
+
+.rounded-4 {
+  border-radius: 20px !important;
+}
+.txt-left{
+    text-align: left;
+}
+.icon-check {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin-top: 2px; /* aligns better vertically */
+}
+.footer {
+  background: url('assets/footer.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 16, 32, 0.85); /* dark overlay */
+  z-index: -1;
+}
+
+.text-orange {
+  color: #ff6600;
+}
+/* Custom colors */
+.text-orange {
+  color: #ff6600;
+}
+
+.bg-blue-light {
+  background-color: #708ddf;
+}
+
+.bg-blue {
+  background-color: #406edc;
+}
+
+.stat-card h6 {
+  font-size: 1rem;
+}
+
+.stat-card h2 {
+  font-size: 2.5rem;
+}
+
+/* Optional: Responsive padding fix */
+@media (max-width: 767.98px) {
+  .stat-card h2 {
+    font-size: 2rem;
+  }
+}
+.our-value-badge {
+  background-color: #fff3e6; /* Soft orange background */
+  color: #ff6600;            /* Bright orange text */
+  font-weight: 600;
+  padding: 6px 18px;
+  font-size: 1rem;
+  border-radius: 999px;
+  display: inline-block;     /* Ensure it doesn’t stretch */
+}
+
+.why-choose-us-badge {
+  background-color: #fff3e6; /* Soft orange background */
+  color: #ff6600;            /* Bright orange text */
+  font-weight: 600;
+  padding: 6px 18px;
+  font-size: 1rem;
+  border-radius: 999px;
+  display: inline-block;     /* Ensure it doesn’t stretch */
+}
+
+.cta-section {
+      background: url('assets/cta-bg.jpg') center center / cover no-repeat;
+      position: relative;
+      padding: 100px 20px;
+      color: #fff;
+    }
+
+    .cta-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-title {
+      font-size: 2.9rem;
+      font-weight: 700;
+    }
+
+    @media (min-width: 768px) {
+      .cta-title {
+        font-size: 3rem;
+      }
+    }
+
+    .btn-cta {
+      font-weight: 600;
+      border-radius: 5px;
+      padding: 0.7rem 1.8rem;
+      font-size: 1rem;
+    }
+    .quote-section {
+      padding: 80px 20px;
+      background-color: #ffffff;
+    }
+
+    .quote-box {
+      background-color: #0b0f1a;
+      border-radius: 20px;
+      padding: 40px;
+    }
+
+    .form-control, .form-select {
+      border-radius: 8px;
+      padding: 10px 15px;
+    }
+
+    .form-label {
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .quote-btn {
+      border-radius: 10px;
+      padding: 10px 24px;
+      font-weight: 600;
+    }
+
+    .quote-btn i {
+      margin-left: 6px;
+    }
+
+    .quote-image {
+      border-radius: 15px;
+      object-fit: cover;
+      width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      .quote-box {
+        padding: 25px;
+      }
+    }
+    .benefit-section {
+      background-color: #fff;
+      padding: 60px 30px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .benefit-section h2 {
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .benefit-section p.lead {
+      color: #6c757d;
+      margin-bottom: 40px;
+    }
+    .highlight {
+      background: #ffe8dd;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: #f26b23;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .feature-icon {
+      font-size: 24px;
+      color: #f26b23;
+    }
+    .progress-bar {
+      background-color: #f26b23;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+    .bg-orange {
+  background-color: #f26b23 !important;
+}
+@keyframes slideUpFadeIn {
+    from {
+      transform: translateY(60px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .hero-section .container > * {
+    animation: slideUpFadeIn 2s ease-out forwards;
+    opacity: 0; /* Start hidden */
+  }
+
+  /* Staggered delay (slower) */
+  .hero-section .container > *:nth-child(1) {
+    animation-delay: 0.5s;
+  }
+  .hero-section .container > *:nth-child(2) {
+    animation-delay: 1s;
+  }
+  .hero-section .container > *:nth-child(3) {
+    animation-delay: 1.5s;
+  }
+  .hero-section .container > *:nth-child(4) {
+    animation-delay: 2s;
+  }
+  .hero-section .container > *:nth-child(5) {
+    animation-delay: 2.5s;
+  }
+
+  .stat-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card img.card-hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    z-index: 1;
+  }
+
+  .stat-card:hover img.card-hover-img {
+    opacity: 0.7; /* Adjust visibility here (0.1 to 0.3 recommended) */
+  }
+
+  .stat-card > *:not(img) {
+    position: relative;
+    z-index: 2;
+  }
+  .mt1{
+    margin-top: 60px;
+  }
+  .count-up {
+  transition: all 0.3s ease-in-out;
+}
+.bg1{
+  background-color: #331a0e;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
+  backdrop-filter: blur(8px);           /* blurred background */
+  display: none;                        /* hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  color: #333;
+  padding: 30px;
+  width: 90%;
+  max-width: 700px;
+  border-radius: 12px;
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-page {
+  display: none;
+}
+
+.modal-page.active {
+  display: block;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.form-box {
+  background-color: #ffffff;
+  border-radius: 1rem;
+}
+
+.form-input {
+  background-color: #e8eeff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+}
+
+.form-input::placeholder {
+  color:  #0B132B;
+}
+
+.form-label {
+  color: #0B132B;
+  font-size: 0.9rem;
+}
+
+.form-select.form-input {
+  color: #0B132B;
+}
+
+.btn-dark {
+  background-color: #0B132B;
+  border: none;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark px-4 py-3">
+    <a class="navbar-brand fw-bold fs-2 text-white" href="#">Homee Hub</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav me-3 fs-5">
+        <li class="nav-item"><a class="nav-link text-white" href="#home-security">Home Security</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#roofing">Roofing</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#windows">Windows</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#sliding">Sliding</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-orange fw-bold fs-6 px-4 py-2">Get A Quote</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+<section class="hero-section d-flex align-items-center text-left py-5" >
+  <div class="container">
+    <div class="row align-items-center mt-5">
+      
+      <!-- Left Content -->
+      <div class="col-md-6 text-white">
+        <p class="fw-semibold small mb-4 ">Elevate your Home with HomeeHub</p>
+        <h1 class="display-5 fw-bold mb-3">
+          Your <span class="highlight-orange">Trusted</span> Roofing, Windows,
+          Sliding & Security 
+          <span class="highlight-orange">Experts!</span>
+        </h1>
+        <p class="mt-4 fs-6 text-light">
+          Discover the benefits of professional home improvement<br>
+          services tailored for safety, style, and durability
+        </p>
+        <a href="#" class="btn btn-orange mt-4 mb-3 px-4 py-2 fs-6">Get a Quote →</a>
+      </div>
+
+      <!-- Right Form -->
+      <div class="col-md-6">
+        <div class="form-box bg-white text-dark p-4 rounded-4 shadow-lg">
+          <form>
+            <div class="row mb-3">
+              <div class="col">
+                <label class="form-label fw-semibold">First Name</label>
+                <input type="text" class="form-control form-input" placeholder="Enter First Name">
+              </div>
+              <div class="col">
+                <label class="form-label fw-semibold">Last Name</label>
+                <input type="text" class="form-control form-input" placeholder="Enter Last Name">
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col">
+                <label class="form-label fw-semibold">Zip Code</label>
+                <input type="text" class="form-control form-input" placeholder="Enter Zip Code">
+              </div>
+              <div class="col">
+                <label class="form-label fw-semibold">Email</label>
+                <input type="email" class="form-control form-input" placeholder="Enter your email address">
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label fw-semibold">Services Interested</label>
+              <select class="form-select form-input">
+                <option selected disabled>Choose a service option</option>
+                <option>Roofing</option>
+                <option>Windows</option>
+                <option>Sliding</option>
+                <option>Security</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn highlight-orange w-100 py-2">
+              Submit →
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <section class="py-5 bg-white text-center">
+  <div class="container">
+    <!-- Section Header -->
+    <h2 class="fw-bold display-5 mb-3">Take a Look at Some of<br>Our Essential Home Services</h2>
+    <p class="text-muted mb-5 fs-6" id="home-security">
+      From smart home security to durable roofing, energy-saving windows, and modern sliding solutions<br>
+      HomeeHub delivers trusted upgrades to protect and enhance your home inside and out
+    </p>
+
+    <!-- Card Row -->
+    <div class="row justify-content-center" >
+      <div class="col-lg-12">
+        <div class="row g-0 bg-dark text-white rounded-4 overflow-hidden shadow p-4">
+          <!-- Image Column -->
+<div class="col-md-5 animate-image">
+  <img src="assets/secuirity.png" alt="Security Camera" class="img-fluid rounded-3 w-100 h-100 object-fit-cover"/>
+</div>
+
+<!-- Content Column -->
+<div class="col-md-7 d-flex flex-column justify-content-start ps-md-4 pt-4 pt-md-0 mt-4 animate-text">
+  <h4 class="fw-bold justify-content-start txt-left">Smart Security Installation – Safe Haven Project</h4>
+  <p class="text-light small justify-content-start mt-2 txt-left">
+    We upgraded this modern residence with a fully integrated smart security system. From motion sensors to remote surveillance, every corner is protected — ensuring 24/7 peace of mind for the homeowners.
+  </p>
+  <ul class="list-unstyled text-start mb-4">
+    <li class="mb-2 d-flex align-items-start mt-3">
+      <img src="assets/Check.png" alt="check" class="me-2 icon-check">
+      Real-time mobile alerts
+    </li>
+    <li class="mb-2 d-flex align-items-start mt-3">
+      <img src="assets/Check.png" alt="check" class="me-2 icon-check">
+      Smart locks & camera integration
+    </li>
+    <li class="d-flex align-items-start mt-3">
+      <img src="assets/Check.png" alt="check" class="me-2 icon-check">
+      Energy-efficient system
+    </li>
+  </ul>
+  <div>
+    <a href="#" class="btn btn-orange rounded-square mt-3 px-4 py-2 fw-semibold" id="roofing">
+      Get a Quote →
+    </a>
+  </div>
+</div>
+        </div>
+
+
+        <div class="row g-0 bg-blue text-white rounded-4 overflow-hidden shadow p-4 mt1">
+  
+  <!-- 🖼 Image First on Mobile, Second on Desktop -->
+  <div class="col-md-5 order-1 order-md-2 animate-image">
+    <img src="assets/Our services THF/1.jpg" alt="Security Camera" class="img-fluid rounded-3 w-100 h-100 object-fit-cover"/>
+  </div>
+
+  <!-- 📝 Text Second on Mobile, First on Desktop -->
+  <div class="col-md-7 d-flex flex-column justify-content-start ps-md-4 pt-4 pt-md-0 mt-4 order-2 order-md-1 animate-text">
+    <h4 class="fw-bold justify-content-start txt-left">Durable Roof Makeover – Skyline Shelter</h4>
+    <p class="text-light small justify-content-start mt-2 txt-left">
+      Our expert team replaced an aging roof with a new, impact-resistant solution built to withstand extreme weather. Enhanced insulation, sleek design, and leak-proof installation added long-term value.
+    </p>
+    <ul class="list-unstyled text-start mb-4">
+      <li class="mb-2 d-flex align-items-start mt-3">
+        <img src="assets/Check.png" alt="check" class="me-2 icon-check">
+        30-year warranty shingles
+      </li>
+      <li class="mb-2 d-flex align-items-start mt-3">
+        <img src="assets/Check.png" alt="check" class="me-2 icon-check">
+        Weatherproof sealing
+      </li>
+      <li class="d-flex align-items-start mt-3">
+        <img src="assets/Check.png" alt="check" class="me-2 icon-check">
+        Efficient drainage system
+      </li>
+    </ul>
+    <div>
+      <a href="#" class="btn btn-orange rounded-square mt-3 mb-3 px-4 py-2 fw-semibold" id="windows">
+        Get a Quote →
+      </a>
+    </div>
+  </div>
+
+</div>
+
+
+        <div class="row g-0 bg-dark text-white rounded-4 overflow-hidden shadow p-4 mt1">
+          <!-- Image Column -->
+<div class="col-md-5 animate-image">
+  <img src="assets/Our services THF/2.jpg" alt="Security Camera" class="img-fluid rounded-3 w-100 h-100 object-fit-cover"/>
+</div>
+
+<!-- Content Column -->
+<div class="col-md-7 d-flex flex-column justify-content-start ps-md-4 pt-4 pt-md-0 mt-4 animate-text">
+  <h4 class="fw-bold justify-content-start txt-left">Energy-Efficient Windows – BrightView Project</h4>
+  <p class="text-light small justify-content-start mt-2 txt-left">
+    We installed high-performance, double-pane windows to maximize natural light while minimizing energy loss. This modern upgrade boosted curb appeal and indoor comfort.
+  </p>
+  <ul class="list-unstyled text-start mb-4">
+    <li class="mb-2 d-flex align-items-start mt-3">
+      <img src="assets/Check.png" alt="check" class="me-2 icon-check">
+      UV-blocking glass
+    </li>
+    <li class="mb-2 d-flex align-items-start mt-3">
+      <img src="assets/Check.png" alt="check" class="me-2 icon-check">
+      Noise reduction
+    </li>
+    <li class="d-flex align-items-start mt-3">
+      <img src="assets/Check.png" alt="check" class="me-2 icon-check">
+      Sleek aluminum frames
+    </li>
+  </ul>
+  <div>
+    <a href="#" class="btn btn-orange rounded-square mt-3 px-4 py-2 fw-semibold" id="sliding">
+      Get a Quote →
+    </a>
+  </div>
+</div>
+        </div>
+
+
+        <div class="row g-0 bg1 text-white rounded-4 overflow-hidden shadow p-4 mt1">
+  
+  <!-- 🖼 Image First on Mobile, Second on Desktop -->
+  <div class="col-md-5 order-1 order-md-2 animate-image">
+    <img src="assets/Our services THF/3.jpg" alt="Security Camera" class="img-fluid rounded-3 w-100 h-100 object-fit-cover"/>
+  </div>
+
+  <!-- 📝 Text Second on Mobile, First on Desktop -->
+  <div class="col-md-7 d-flex flex-column justify-content-start ps-md-4 pt-4 pt-md-0 mt-4 order-2 order-md-1 animate-text">
+    <h4 class="fw-bold justify-content-start txt-left">Stylish Siding Upgrade – Urban Edge Facade</h4>
+    <p class="text-light small justify-content-start mt-2 txt-left">
+      We transformed this home’s exterior with low-maintenance, weather-resistant siding. The new finish not only protects but also elevates the look of the entire property.
+    </p>
+    <ul class="list-unstyled text-start mb-4">
+      <li class="mb-2 d-flex align-items-start mt-3">
+        <img src="assets/Check.png" alt="check" class="me-2 icon-check">
+        Fade-resistant colors
+      </li>
+      <li class="mb-2 d-flex align-items-start mt-3">
+        <img src="assets/Check.png" alt="check" class="me-2 icon-check">
+        Mold and crack protection
+      </li>
+      <li class="d-flex align-items-start mt-3">
+        <img src="assets/Check.png" alt="check" class="me-2 icon-check">
+        Modern curb appeal
+      </li>
+    </ul>
+    <div>
+      <a href="#" class="btn btn-orange rounded-square mt-3 mb-3 px-4 py-2 fw-semibold">
+        Get a Quote →
+      </a>
+    </div>
+  </div>
+
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-white benefit-equal-height">
+  <div class="container">
+    <div class="row align-items-stretch pt-5 pb-5">
+      <!-- Left Image -->
+      <div class="col-lg-6 mb-4 mb-lg-0 ">
+        <div class="h-100">
+          <img src="assets/why-chhose-us.jpg" alt="Meeting" class="img-fluid rounded-4 shadow w-100 h-100 object-fit-cover">
+        </div>
+      </div>
+
+      <!-- Right Content -->
+      <div class="col-lg-6  flex-column justify-content-center">
+      <span class="why-choose-us-badge mb-4">Why Choose Us</span>
+        <h2 class="fw-bold display-6 mb-4">Discover The Benefits Of<br>Partnering With Our Expert</h2>
+        <p class="text-muted fs-6 mb-5">
+          At HomeeHub, we combine expert craftsmanship with advanced technology to deliver home improvement solutions you can rely on — from roofing to security and beyond.
+        </p>
+
+        <!-- Features -->
+        <div class="row mb-5">
+          <div class="col-sm-6 mb-3">
+            <div class="d-flex align-items-start">
+              <i class="bi bi-stars text-orange fs-3 me-3"></i>
+              <div>
+                <h6 class="fw-semibold mb-1">Expert Installation</h6>
+                <small class="text-muted d-block">
+                  Every device is installed with precision and care — built to last and perform.
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 mb-3">
+            <div class="d-flex align-items-start">
+              <i class="bi bi-headset text-orange fs-3 me-3"></i>
+              <div>
+                <h6 class="fw-semibold mb-1">Ongoing Support</h6>
+                <small class="text-muted d-block">
+                  Continued maintenance, troubleshooting, and upgrades whenever you need them.
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Bars -->
+        <div class="mb-3">
+          <div class="d-flex justify-content-between">
+            <span class="fw-semibold">Customer Satisfaction</span>
+            <span class="text-orange">90%</span>
+          </div>
+          <div class="progress" style="height: 8px;">
+            <div class="progress-bar bg-orange" style="width: 90%;"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="d-flex justify-content-between">
+            <span class="fw-semibold">24 X 7 System Support</span>
+            <span class="text-orange">100%</span>
+          </div>
+          <div class="progress" style="height: 8px;">
+            <div class="progress-bar bg-orange" style="width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="cta-section text-center " >
+    <div class="cta-overlay"></div>
+    <div class="container cta-content">
+      <h2 class="cta-title mb-4">
+        Begin your journey to a <br>
+        smarter, safer home today
+      </h2>
+      <a href="#" class="btn btn-orange btn-cta">
+        Get a Quote <i class="bi bi-arrow-right ms-2"></i>
+      </a>
+    </div>
+  </section>
+
+<section class="py-5 bg-white">
+  <div class="container ">
+    <!-- Tag + Heading + Description -->
+    <div class="row align-items-start mb-5 pt-5 pb-5">
+      <div class="col-md-8">
+        <span class="our-value-badge mb-4">Our Value</span>
+        <h2 class="fw-bold display-5 mb-3">
+          Experience Unparalleled Service <br>
+          And Cutting-Edge Technology
+        </h2>
+      </div>
+      <div class="col-md-4 mt-5">
+        <p class="text-muted small">
+          At HomeeHub, we combine innovative tools, expert craftsmanship, and a passion for home improvement to deliver results that truly matter — safer, smarter, and stronger homes.
+        </p>
+      </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="row text-white text-center g-4">
+  <div class="col-md-4">
+    <div class="stat-card bg-dark h-100 rounded-4 p-4">
+      <img src="assets/Hover images THF/1.jpg" alt="Smart Home" class="card-hover-img" />
+      <h6 class="mb-2 fs-4">Smart Home Installation</h6>
+      <h2 class="fw-bold display-6 mt-5 pt-5 txt-left count-up" data-target="2341" data-suffix="+">0</h2>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="stat-card bg-blue-light h-100 rounded-4 p-4">
+      <img src="assets/Hover images THF/2.jpg" alt="Happy Homeowners" class="card-hover-img" />
+      <h6 class="mb-2 fs-4">Happy Homeowners</h6>
+      <h2 class="fw-bold display-6 mt-5 pt-5 txt-left count-up" data-target="4535" data-suffix="+">0</h2>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="stat-card bg-blue h-100 rounded-4 p-4">
+      <img src="assets/Hover images THF/3.jpg" alt="Satisfaction Rate" class="card-hover-img" />
+      <h6 class="mb-2 fs-4">Satisfaction Rate</h6>
+      <h2 class="fw-bold display-6 mt-5 pt-5 txt-left count-up" data-target="98" data-suffix="%">0</h2>
+    </div>
+  </div>
+</div>
+  </div>
+</section>
+
+
+
+
+<!-- Footer Section -->
+<footer class="footer text-white pt-5 pb-3">
+  <div class="container position-relative">
+    <div class="row">
+      <!-- Company Info -->
+      <div class="col-md-4 mb-4 mb-md-0">
+        <h5 class="fw-bold fs-2 text-orange text-center">Homee Hub</h5>
+        <p class="small text-center">
+          HomeeHub is your trusted partner for reliable, high-quality home improvement services — from smart security and roofing to energy-efficient windows and siding solutions
+        </p>
+      </div>
+      <div class="col-md-2">
+        
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-6">
+        <h6 class="fw-bold fs-5 text-orange mb-3">Quick Links</h6>
+        <div class="row">
+          <div class="col-md-4 ftr">
+            <ul class="list-unstyled medium">
+              <li class="mb-2"><a href="#home-security" class="text-white text-decoration-none">Home Security</a></li>
+              <li class="mb-2"><a href="#roofing" class="text-white text-decoration-none">Roofing</a></li>
+              <li class="mb-2"><a href="#windows" class="text-white text-decoration-none">Windows</a></li>
+              <li><a href="#sliding" class="text-white text-decoration-none">Sliders</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+  <ul class="list-unstyled medium">
+    <li class="mb-2"><a href="#" class="text-white text-decoration-none" onclick="openModal('privacy')">Privacy Policy</a></li>
+    <li class="mb-2"><a href="#" class="text-white text-decoration-none" onclick="openModal('terms')">Terms & Conditions</a></li>
+    <li><a href="#" class="text-white text-decoration-none" onclick="openModal('disclaimer')">Disclaimers</a></li>
+  </ul>
+</div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Overlay -->
+<div id="pageModal" class="modal-overlay">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal()">✖</button>
+    <div id="modalPages">
+      <div id="privacy" class="modal-page"> 
+        <h4 class="mb-5 d-flex align-items-center justify-content-center" style="color: #ff6600;"><u>Privacy Policy</u></h4>
+        <h5>Data Collection</h5>
+        <p>This section explains what personal information is collected (e.g., name, email, IP address) and how it is collected, whether through forms, cookies, or log files.</p>
+        
+        <h5>Data Usage</h5>
+        <p>This section explains how the collected information is used. This could include using the data to provide services, personalize the website experience, or send promotional emails.</p>
+        
+        <h5>Third-Party Sharing</h5>
+        <p>This section discloses if and why data is shared with third parties, such as advertising partners, analytics providers, or service providers.</p>
+        
+        <h5>User Rights</h5>
+        <p>This section informs users of their rights regarding their data. This includes the right to access, correct, or request the deletion of their personal information.</p>
+        
+        <h5>Security</h5>
+        <p>This section describes the measures taken to protect user data from unauthorized access, loss, or alteration. It explains the security protocols in place.</p>
+        
+        <h5>Cookies</h5>
+        <p>This section explains the use of cookies on the website. It describes what cookies are, how they are used, and how users can manage or disable them in their browser settings.</p>
+        
+        <h5>Contact Information</h5>
+        <p>This section provides a way for users to contact the company with any questions or concerns they may have about their privacy or the privacy policy.</p>
+      </div>
+      <div id="terms" class="modal-page"> 
+        <h4 class="mb-5 d-flex align-items-center justify-content-center" style="color: #ff6600;"><u>Terms & Conditions</u></h4>
+        <h5>Acceptable Use</h5>
+        <p>This section outlines the rules and guidelines for using the website or service. It specifies what is considered acceptable behavior and what is prohibited.</p>
+        
+        <h5>Intellectual Property</h5>
+        <p>This section protects the company's intellectual property, such as logos, designs, and content. It states that all content on the site is owned by the company and cannot be used without permission.</p>
+        
+        <h5>Limitation of Liability</h5>
+        <p>This section limits the company's liability for any damages or issues that may arise from using the website. It often includes a disclaimer that the site is provided "as is" without warranties.</p>
+        
+        <h5>Termination</h5>
+        <p>This section states the company's right to terminate a user's account or access to the service for abusive or prohibited behavior. It may also outline the process for a user to terminate their own account.</p>
+        
+        <h5>Governing Law</h5>
+        <p>This section specifies which laws will apply in the event of a legal dispute. It is important for determining the jurisdiction where any legal action would take place.</p>
+        
+        <h5>Payment & Pricing</h5>
+        <p>This section, if applicable, details payment methods, pricing, and refund policies for any products or services offered on the website.</p>
+      </div>
+      <div id="disclaimer" class="modal-page"> 
+        <h4>Disclaimer</h4>
+        <p>This is your Disclaimer page content.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Divider -->
+    <hr class="border-light opacity-25 my-4">
+
+    <!-- Copyright -->
+    <div class="text-center small">
+      © 2025 <a href="./">HomeeHub</a>. All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll(".count-up").forEach(el => {
+    const target = +el.getAttribute("data-target");
+    const suffix = el.getAttribute("data-suffix") || "";
+
+    let obj = { val: 0 };
+
+    ScrollTrigger.create({
+      trigger: el,
+      start: "top 90%",
+      once: true,
+      onEnter: () => {
+        gsap.to(obj, {
+          val: target,
+          duration: 2,
+          ease: "power2.out",
+          onUpdate: () => {
+            el.textContent = Math.floor(obj.val) + suffix;
+          }
+        });
+      }
+    });
+  });
+</script>
+<script>
+  function openModal(pageId) {
+    document.getElementById("pageModal").style.display = "flex";
+    document.body.style.overflow = "hidden"; // disable scroll
+
+    // Hide all pages
+    document.querySelectorAll(".modal-page").forEach(el => el.classList.remove("active"));
+
+    // Show selected page
+    document.getElementById(pageId).classList.add("active");
+  }
+
+  function closeModal() {
+    document.getElementById("pageModal").style.display = "none";
+    document.body.style.overflow = "auto"; // enable scroll
+  }
+</script>
+
+</body>
+</html>
